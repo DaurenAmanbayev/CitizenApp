@@ -18,7 +18,6 @@
         <datasource-mapping>
           <factory-entry name="persistenceUnit" />
         </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/webapp/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>

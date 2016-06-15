@@ -9,7 +9,9 @@ Ext.define('Citizen', {
         name: 'id',
         type: 'int',
         useNull: true
-    }, 'name', 'price'],
+    }, 'name', 'lastName','birthDate', 'homeAddress', 'documentNumber', 'documentType',
+        'documentCreatedDate', 'documentExpiredDate'],
+    /*валидация данных*/
     validations: [{
         type: 'length',
         field: 'name',
@@ -18,11 +20,7 @@ Ext.define('Citizen', {
         type: 'length',
         field: 'lastName',
         min: 1
-    }, {
-        type: 'length',
-        field: 'lastName',
-        min: 1
-        }]
+    }]
 });
 
 Ext.onReady(function () {
@@ -55,12 +53,12 @@ Ext.onReady(function () {
     });
 
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing');
-
+    /*Панель таблица*/
     var grid = Ext.create('Ext.grid.Panel', {
         renderTo: document.body,
         plugins: [rowEditing],
-        width: 400,
-        height: 300,
+        width: 600,
+        height: 400,
         frame: true,
         title: 'Citizens',
         store: store,
@@ -72,6 +70,7 @@ Ext.onReady(function () {
         }, {
             text: 'Name',
             flex: 1,
+            width: 80,
             sortable: true,
             dataIndex: 'name',
             field: {
@@ -80,16 +79,63 @@ Ext.onReady(function () {
         }, {
             header: 'LastName',
             flex:1,
+            width: 80,
             sortable: true,
             dataIndex: 'lastName',
             field: {
                 xtype: 'textfield'
             }
         }, {
-            text:'Document No',
+            text:'Birthday',
             flex:1,
+            width: 80,
             sortable:true,
-            dataIndex:'documentNumber',
+            dataIndex:'birthDate',
+            field: {
+                xtype: 'textfield'
+            }
+        }, {
+            header: 'Address',
+            flex:1,
+            width: 80,
+            sortable: true,
+            dataIndex: 'homeAddress',
+            field: {
+                xtype: 'textfield'
+            }
+        },{
+            header: 'Doc No',
+            flex:1,
+            width: 80,
+            sortable: true,
+            dataIndex: 'documentNumber',
+            field: {
+                xtype: 'textfield'
+            }
+        },{
+            header: 'Doc Type',
+            flex:1,
+            width: 80,
+            sortable: true,
+            dataIndex: 'documentType',
+            field: {
+                xtype: 'textfield'
+            }
+        },{
+            header: 'Doc Create',
+            flex:1,
+            width: 80,
+            sortable: true,
+            dataIndex: 'documentCreatedDate',
+            field: {
+                xtype: 'textfield'
+            }
+        },{
+            header: 'Doc Expire',
+            flex:1,
+            width: 80,
+            sortable: true,
+            dataIndex: 'documentExpiredDate',
             field: {
                 xtype: 'textfield'
             }
