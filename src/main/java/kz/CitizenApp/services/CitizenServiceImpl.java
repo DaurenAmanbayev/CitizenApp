@@ -74,7 +74,7 @@ public class CitizenServiceImpl implements CitizenService{
         return findCitizenBySearchType(searchTerm, searchType);
 
     }
-
+    //не импользуется!!!
     private List<Citizen> findCitizenBySearchType(String searchTerm, SearchType searchType) {
         List<Citizen> citizens=null;//убрать nullри имплементации
 /*

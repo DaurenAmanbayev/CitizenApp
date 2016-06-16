@@ -15,15 +15,16 @@ Ext.Loader.setConfig({enabled: true});
 
 Ext.Loader.setPath('Ext.ux', '../ux/');
 
-//---доработать
+//модель 
 Ext.define('Citizen', {
     extend: 'Ext.data.Model',
     fields: [{
         name: 'id',
         type: 'int',
         useNull: true
-    }, 'name', 'lastName','birthDate', 'homeAddress', 'documentNumber', 'documentType',
-        'documentCreatedDate', 'documentExpiredDate'],
+    }, 'name', 'lastName','birthDate','homeAddress',
+        'documentNumber', 'documentType','documentCreatedDate', 'documentExpiredDate'           
+        ],
     /*валидация данных*/
     validations: [{
         type: 'length',
@@ -36,6 +37,7 @@ Ext.define('Citizen', {
     }]
 });
 
+//панель с возможностью поиска
 Ext.define('Ext.ux.LiveSearchGridPanel', {
     extend: 'Ext.grid.Panel',
     requires: [
@@ -365,7 +367,7 @@ Ext.onReady(function () {
     });
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing');
 
-    // create the Grid, see Ext.
+    // создаем панель CRUD и поиск, проблема с отображением даты, Js не может распарсить строку
     var grid=Ext.create('Ext.ux.LiveSearchGridPanel', {
         store: store,
         columnLines: true,
@@ -396,7 +398,7 @@ Ext.onReady(function () {
         }, {
             header:'Birthday',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             sortable:true,
             dataIndex:'birthDate',
             formatter: 'date',
@@ -435,7 +437,7 @@ Ext.onReady(function () {
         },{
             header: 'Doc Create',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             sortable:true,
             dataIndex:'documentCreatedDate',
             formatter: 'date',
@@ -447,7 +449,7 @@ Ext.onReady(function () {
         },{
             header: 'Doc Expire',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             dataIndex: 'documentExpiredDate',
             formatter: 'date',
             editor: {
@@ -477,8 +479,8 @@ Ext.onReady(function () {
                 }
             }]
         }],
-        height: 350,
-        width: Ext.themeName === 'neptune-touch' || Ext.themeName === 'crisp' ? 700 : 670,
+        height: 400,
+        width: 900,
         title: 'Live Search Citizens',
         plugins: [rowEditing],
         renderTo: document.body,
@@ -487,7 +489,7 @@ Ext.onReady(function () {
         }
     });
 
-    /*Панель таблица*/
+    /*Панель таблица без возможности поиска CRUD*/
     /*
     var grid = Ext.create('Ext.grid.Panel', {
         renderTo: document.body,

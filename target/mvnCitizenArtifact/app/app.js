@@ -22,8 +22,9 @@ Ext.define('Citizen', {
         name: 'id',
         type: 'int',
         useNull: true
-    }, 'name', 'lastName','birthDate', 'homeAddress', 'documentNumber', 'documentType',
-        'documentCreatedDate', 'documentExpiredDate'],
+    }, 'name', 'lastName','birthDate','homeAddress',
+        'documentNumber', 'documentType','documentCreatedDate', 'documentExpiredDate'           
+        ],
     /*валидация данных*/
     validations: [{
         type: 'length',
@@ -399,7 +400,7 @@ Ext.onReady(function () {
             width: 90,
             sortable:true,
             dataIndex:'birthDate',
-            formatter: 'date',
+            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -439,6 +440,7 @@ Ext.onReady(function () {
             sortable:true,
             dataIndex:'documentCreatedDate',
             formatter: 'date',
+            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -450,6 +452,7 @@ Ext.onReady(function () {
             width: 90,
             dataIndex: 'documentExpiredDate',
             formatter: 'date',
+            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -477,8 +480,8 @@ Ext.onReady(function () {
                 }
             }]
         }],
-        height: 350,
-        width: Ext.themeName === 'neptune-touch' || Ext.themeName === 'crisp' ? 700 : 670,
+        height: 400,
+        width: 900,
         title: 'Live Search Citizens',
         plugins: [rowEditing],
         renderTo: document.body,
