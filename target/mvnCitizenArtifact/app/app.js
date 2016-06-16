@@ -86,13 +86,15 @@ Ext.onReady(function () {
                 xtype: 'textfield'
             }
         }, {
-            text:'Birthday',
-            flex:1,
-            width: 80,
+            header:'Birthday',
+            xtype:'datecolumn',
+            width: 90,
             sortable:true,
             dataIndex:'birthDate',
-            field: {
-                xtype: 'textfield'
+            editor: {
+                xtype: 'datefield',
+                allowBlank: true,
+                format: 'd-m-Y'
             }
         }, {
             header: 'Address',
@@ -123,21 +125,24 @@ Ext.onReady(function () {
             }
         },{
             header: 'Doc Create',
-            flex:1,
-            width: 80,
-            sortable: true,
-            dataIndex: 'documentCreatedDate',
-            field: {
-                xtype: 'textfield'
+            xtype:'datecolumn',
+            width: 90,
+            sortable:true,
+            dataIndex:'documentCreatedDate',
+            editor: {
+                xtype: 'datefield',
+                allowBlank: true,
+                format: 'd-m-Y'
             }
         },{
             header: 'Doc Expire',
-            flex:1,
-            width: 80,
-            sortable: true,
+            xtype:'datecolumn',
+            width: 90,
             dataIndex: 'documentExpiredDate',
-            field: {
-                xtype: 'textfield'
+            editor: {
+                xtype: 'datefield',
+                allowBlank: true,
+                format: 'd-m-Y'
             }
         }],
         dockedItems: [{

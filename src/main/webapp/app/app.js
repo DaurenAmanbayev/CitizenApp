@@ -22,7 +22,7 @@ Ext.define('Citizen', {
         min: 1
     }]
 });
-
+/*NaN problem with parsing date */
 Ext.onReady(function () {
 
     var store = Ext.create('Ext.data.Store', {
@@ -94,7 +94,7 @@ Ext.onReady(function () {
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
-                format: 'm/d/Y',
+                format: 'd-m-Y'
             }
         }, {
             header: 'Address',
@@ -132,7 +132,7 @@ Ext.onReady(function () {
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
-                format: 'm/d/Y',
+                format: 'd-m-Y'
             }
         },{
             header: 'Doc Expire',
@@ -142,7 +142,7 @@ Ext.onReady(function () {
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
-                format: 'm/d/Y',
+                format: 'd-m-Y'
             }
         }],
         dockedItems: [{
