@@ -15,7 +15,7 @@ Ext.Loader.setConfig({enabled: true});
 
 Ext.Loader.setPath('Ext.ux', '../ux/');
 
-//---доработать
+//модель 
 Ext.define('Citizen', {
     extend: 'Ext.data.Model',
     fields: [{
@@ -37,6 +37,7 @@ Ext.define('Citizen', {
     }]
 });
 
+//панель с возможностью поиска
 Ext.define('Ext.ux.LiveSearchGridPanel', {
     extend: 'Ext.grid.Panel',
     requires: [
@@ -366,7 +367,7 @@ Ext.onReady(function () {
     });
     var rowEditing = Ext.create('Ext.grid.plugin.RowEditing');
 
-    // create the Grid, see Ext.
+    // создаем панель CRUD и поиск, проблема с отображением даты, Js не может распарсить строку
     var grid=Ext.create('Ext.ux.LiveSearchGridPanel', {
         store: store,
         columnLines: true,
@@ -397,10 +398,10 @@ Ext.onReady(function () {
         }, {
             header:'Birthday',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             sortable:true,
             dataIndex:'birthDate',
-            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
+            formatter: 'date',
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -436,11 +437,10 @@ Ext.onReady(function () {
         },{
             header: 'Doc Create',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             sortable:true,
             dataIndex:'documentCreatedDate',
             formatter: 'date',
-            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -449,10 +449,9 @@ Ext.onReady(function () {
         },{
             header: 'Doc Expire',
             xtype:'datecolumn',
-            width: 90,
+            width: 100,
             dataIndex: 'documentExpiredDate',
             formatter: 'date',
-            renderer : Ext.util.Format.dateRenderer('m-d-Y'),
             editor: {
                 xtype: 'datefield',
                 allowBlank: true,
@@ -490,7 +489,7 @@ Ext.onReady(function () {
         }
     });
 
-    /*Панель таблица*/
+    /*Панель таблица без возможности поиска CRUD*/
     /*
     var grid = Ext.create('Ext.grid.Panel', {
         renderTo: document.body,
